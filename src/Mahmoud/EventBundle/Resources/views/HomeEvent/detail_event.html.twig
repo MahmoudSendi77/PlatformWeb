@@ -1,0 +1,211 @@
+{% extends "base.html.twig" %}
+
+
+{% block stylesheets %}
+{{parent()}}
+
+<!-- Import Leaflet CSS Style Sheet -->
+<link rel="stylesheet" href="https://npmcdn.com/leaflet@1.0.0-rc.2/dist/leaflet.css" />
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<style>
+#my_osm_widget_map { /* use the same name as <div id=""> */
+	width: 100%; /* important! if you need full width display */
+	height: 400px;
+	margin: 0;
+	border-radius: 5px;
+	/* ... */
+}
+</style>
+
+
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+
+{% endblock  %}
+
+
+  {% block header %}
+      <!-- Header -->
+      <header class="masthead">
+          <div class="container">
+              <div class="intro-text">
+                  <div class="intro-lead-in">Welcome To Chick Click!</div>
+                  <div class="intro-heading text-uppercase">WELCOM TO FASHION EVENTS</div>
+              </div>
+          </div>
+      </header>
+
+  {% endblock %}
+{% block other %}
+
+        <!-- Import Leaflet JS Library -->
+        <script src="https://npmcdn.com/leaflet@1.0.0-rc.2/dist/leaflet.js"></script>
+
+
+    <hr>
+    <hr>
+    <hr>
+
+        <center>
+        <div class="view overlay">
+            <!-- Card image -->
+            <img class="card-img-top  w-75 p-3 h-10 d-inline-block align-content-lg-center"  src="{{ event.displayPhoto  }}" alt="Card image cap">
+            <a>
+                <div class="mask rgba-white-slight"></div>
+            </a>
+        </div>
+
+        <!-- Card content -->
+        <div class="card-body elegant-color white-text rounded-bottom w-50 p-3 h-10 d-inline-block align-content-md-center" >
+
+            <!-- Social shares button -->
+            {#<a class="activator waves-effect mr-4"><i class="fas fa-share-alt white-text">Like</i></a>#}
+            <!-- Title -->
+            <h3 class="card-title">{{ event.getEventTitle }}</h3>
+
+
+            <h5 class="card-title">FROM :  {{ event.getEventStartDate|date("m/d/Y") }}   TO :  {{ event.getEventEndDate|date("m/d/Y") }}  </h5>
+            <hr class="hr-light">
+            <!-- Text -->
+            <p class="card-text white-text mb-4">{{ event.getEventDescription }}.</p>
+            <!-- Link -->
+
+        </div>
+
+        </center>
+    <div>
+        <center>
+            <div class="col-8">
+                <div class="elements_milestones">
+                    <div class="elements_title">Some Statistic</div>
+                    <div class="milestones">
+                        <div class="row milestones_container">
+
+                            <!-- Milestone -->
+                            <div class="col-lg-4 milestone_col">
+                                <div class="milestone d-flex flex-row align-items-start justify-content-start">
+                                    <div class="milestone_counter" data-end-value="{{ rank }}">0</div>
+                                    <div class="milestone_content">
+                                        <div class="milestone_text">Rank Of The Year</div>
+                                        <div class="milestone_sub">Top of the top</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Milestone -->
+                            <div class="col-lg-4 milestone_col">
+                                <div class="milestone d-flex flex-row align-items-start justify-content-start">
+                                    <div class="milestone_counter" data-end-value="{{ subscriber }}" data-sign-after="">0</div>
+                                    <div class="milestone_content">
+                                        <div class="milestone_text">People Joined</div>
+                                        <div class="milestone_sub">Number Of Subscription</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Milestone -->
+                            <div class="col-lg-4 milestone_col">
+                                <div class="milestone d-flex flex-row align-items-start justify-content-start">
+                                    <div class="milestone_counter" data-end-value="{{ available }}">0</div>
+                                    <div class="milestone_content">
+                                        <div class="milestone_text">Available Place </div>
+                                        <div class="milestone_sub">Be Here</div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+
+
+        </center>
+    </div>
+
+    <center>
+
+        {# element rend statistique#}
+
+        <div class="elements_loaders">
+            <div class="elements_title">INTERACTIONS</div>
+            <div class="loaders_container">
+                <center>
+                    {#<div class="row elements_loaders_container">
+                        <div class="col-lg-3 loader_col">
+                            <!-- Loader -->
+                            <div class="circle loader" data-value="0.85">
+                                <strong><i></i></strong>
+                                <span>Like</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 loader_col">
+                            <div class="circle loader" data-value="0.50">
+                                <strong><i></i></strong>
+                                <span>Rating</span>
+                            </div>
+                        </div>#}
+                        <div class=" loader_col">
+                            <div class="circle loader" data-value="{{ perSubs }}">
+                                <strong><i></i></strong>
+                                <span>Subscription</span>
+                            </div>
+                        </div>
+                    </div>
+                </center>
+            </div>
+        </div>
+    </center>
+
+
+
+        <section class="bg-light page-section" >
+
+            <hr>
+
+            <hr>
+            <div id="my_osm_widget_map"></div>
+            <hr>
+            <script >
+                var lat = {{ lat }};
+                var lon = {{ lon }};
+
+                var mymap = L.map('my_osm_widget_map', { /* use the same name as your <div id=""> */
+                    center: [lat, lon], /* set GPS Coordinates */
+                    zoom: 8, /* define the zoom level */
+                    zoomControl: true, /* false = no zoom control buttons displayed */
+                    scrollWheelZoom: true /* false = scrolling zoom on the map is locked */
+                });
+
+                L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFobW91ZHNlbmRpIiwiYSI6ImNrM2FxYjR0NjBldm4zbW4zNGYxcHBqdXkifQ.V0MqzbF3ovQ3PfDQv87P4w', { /* set your personal MapBox Access Token */
+                    maxZoom: 20, /* zoom limit of the map */
+                    attribution: 'Données &copy; Contributeurs <a href="http://openstreetmap.org">OpenStreetMap</a> + ' +
+                    '<a href="http://mapbox.com">Mapbox</a> | ' +
+                    '<a href="https://creativecommons.org/licenses/by/2.0/">CC-BY</a> ' +
+                    'Guillaume Rouan 2016', /* set the map's caption */
+                    id: 'mapbox.streets' /* mapbox.light / dark / streets / outdoors / satellite */
+                }).addTo(mymap);
+
+
+                L.marker([lat, lon]).addTo(mymap); /* set your location's GPS Coordinates : [LAT,LON] */
+
+                L.popup
+                    .setLatLng([lat, lon])
+                    .setContent({{ event.eventTitle }})
+                    .openOn(mymap);
+            </script>
+
+        </section>
+
+    {% block javascripts %}
+        {{ parent() }}
+    {% endblock %}
+
+{%  endblock %}

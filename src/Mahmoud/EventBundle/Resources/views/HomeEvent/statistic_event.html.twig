@@ -1,0 +1,118 @@
+{% extends "base.html.twig" %}
+
+
+{% block stylesheets %}
+    {{ parent() }}
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" type="text/css" href="{{ asset('eventStyle/styles/bootstrap4/bootstrap.min.css') }}">
+
+    <link href="{{ asset('eventStyle/plugins/font-awesome-4.7.0/css/font-awesome.min.css') }}" rel="stylesheet"
+          type="text/css">
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('eventStyle/styles/elements.css') }}">
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('eventStyle/styles/elements_responsive.css') }}">
+
+{% endblock %}
+
+
+
+
+{% block other %}
+    {#element statistic#}
+    {% block javascripts %}
+        {{ parent() }}
+        <script src="{{ asset('eventStyle/js/jquery-3.2.1.min.js') }}"></script>
+
+
+
+        <script src="{{ asset('eventStyle/styles/bootstrap4/popper.js') }}"></script>
+        <script src="{{ asset('eventStyle/styles/bootstrap4/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('eventStyle/plugins/greensock/TweenMax.min.js') }}"></script>
+        <script src="{{ asset('eventStyle/plugins/greensock/TimelineMax.min.js') }}"></script>
+        <script src="{{ asset('eventStyle/plugins/scrollmagic/ScrollMagic.min.js') }}"></script>
+        <script src="{{ asset('eventStyle/plugins/greensock/animation.gsap.min.js') }}"></script>
+        <script src="{{ asset('eventStyle/plugins/greensock/ScrollToPlugin.min.js') }}"></script>
+        <script src="{{ asset('eventStyle/plugins/progressbar/progressbar.min.js') }}"></script>
+        <script src="{{ asset('eventStyle/plugins/easing/easing.js') }}"></script>
+        <script src="{{ asset('eventStyle/plugins/jquery-circle-progress-1.2.2/circle-progress.js') }}"></script>
+        <script src="{{ asset('eventStyle/plugins/parallax-js-master/parallax.min.js') }}"></script>
+        <script src="{{ asset('eventStyle/js/elements.js') }}"></script>
+
+    {% endblock %}
+    <center>
+        <div class="col-8">
+            <div class="elements_milestones">
+                <div class="elements_title">Milestones</div>
+                <div class="milestones">
+                    <div class="row milestones_container">
+
+                        <!-- Milestone -->
+                        <div class="col-lg-4 milestone_col">
+                            <div class="milestone d-flex flex-row align-items-start justify-content-start">
+                                <div class="milestone_counter" data-end-value="35">0</div>
+                                <div class="milestone_content">
+                                    <div class="milestone_text">Rank Of The Year</div>
+                                    <div class="milestone_sub">Top of the top</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Milestone -->
+                        <div class="col-lg-4 milestone_col">
+                            <div class="milestone d-flex flex-row align-items-start justify-content-start">
+                                <div class="milestone_counter" data-end-value="100" data-sign-after="k">0</div>
+                                <div class="milestone_content">
+                                    <div class="milestone_text">People Joined</div>
+                                    <div class="milestone_sub">Number Of Subscription</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Milestone -->
+                        <div class="col-lg-4 milestone_col">
+                            <div class="milestone d-flex flex-row align-items-start justify-content-start">
+                                <div class="milestone_counter" data-end-value="30">0</div>
+                                <div class="milestone_content">
+                                    <div class="milestone_text">People Like It</div>
+                                    <div class="milestone_sub">In a year</div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+            {# element rend statistique#}
+
+            <div class="elements_loaders">
+                <div class="elements_title">INTERACTIONS</div>
+                <div class="loaders_container">
+                    <div class="row elements_loaders_container">
+                        <div class="col-lg-3 loader_col">
+                            <!-- Loader -->
+                            <div class="circle loader" data-value="0.85">
+                                <strong><i></i></strong>
+                                <span>Like</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 loader_col">
+                            <div class="circle loader" data-value="0.50">
+                                <strong><i></i></strong>
+                                <span>Rating</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 loader_col">
+                            <div class="circle loader" data-value="0.65">
+                                <strong><i></i></strong>
+                                <span>Subscription</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </center>
+{% endblock %}

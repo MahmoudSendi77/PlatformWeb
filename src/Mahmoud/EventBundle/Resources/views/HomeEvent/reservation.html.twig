@@ -1,0 +1,60 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Event Card</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="{{ asset("card/css/style.css") }}">
+
+
+    <style type="text/css" media="print">
+        .no-print { display: none; }
+    </style>
+
+
+</head>
+
+<body>
+
+
+<div class="event_container">
+    {#
+        <div class="event_bg" style="background-image: url('https://images.unsplash.com/photo-1483443487168-a49ed320d532?ixlib=rb-0.3.5&amp;q=85&amp;fm=jpg&amp;crop=entropy&amp;cs=srgb&amp;s=25a13b3cccc5f22a2d4cb32c4171e3c4')"></div>
+    #}
+    <div class="event_bg"><img src="{{ res.eventId.displayPhoto  }}"  width="300" height="230">
+    </div>
+    <div class="event_info">
+        <div class="event_title">
+
+                <h4>{{  res.eventId.getEventTitle }}</h4>
+                <h5>@{{  res.eventId.getEventCountry }}</h5>
+
+
+        </div>
+        <div class="event_desc">
+            {#<p> {{  res.eventId.getEventDescription|slice(0,120) }}.</p>#}
+            <h4> On The Naame Of {{  res.userId.getUsername }} <br> Welcome To {{  res.eventId.getEventTitle }} </h4>
+        </div>
+
+
+        <div class="event_footer">
+            <div class="event_date">
+                <p>{{ res.eventId.getEventStartDate|date("m/d/Y") }}</p>
+            </div>
+
+                <div class="event_more ">
+                    <p>{{ res.getCode() }}</p>
+                    <div class="no-print">
+                    <a href="javascript:window.print()" class="btn_more">
+                        Save File TO ...
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

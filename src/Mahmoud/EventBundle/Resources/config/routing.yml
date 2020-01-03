@@ -1,0 +1,158 @@
+
+event_homepage:
+    path:     /
+    defaults: { _controller: MahmoudEventBundle:Default:index }
+
+home_event:
+    path:     /homeEvent
+    defaults: { _controller: MahmoudEventBundle:HomeEvent:homeEvent }
+
+show_event:
+    path:     /showEvent
+    defaults: { _controller: MahmoudEventBundle:HomeEvent:showEvent }
+
+event_detail:
+    path:     /showEventDetail/{id}
+    defaults: { _controller: MahmoudEventBundle:HomeEvent:showEventDetail }
+
+
+modify_event:
+    path:     /modifyevent/{id}
+    defaults: { _controller: MahmoudEventBundle:HomeEvent:updateEvent }
+
+add_event:
+    path:     /addEvent
+    defaults: { _controller: MahmoudEventBundle:HomeEvent:addEvent }
+
+modify_eventDB:
+    path:     /modifyevent/{id}
+    defaults: { _controller: MahmoudEventBundle:HomeEvent:updateEventDB }
+
+add_eventDB:
+    path:     /addEventDB
+    defaults: { _controller: MahmoudEventBundle:HomeEvent:addEventDB }
+
+add_event_location:
+    path:     /addEventlocation/{id}
+    defaults: { _controller: MahmoudEventBundle:HomeEvent:addEventLocation }
+
+add_event_locationdb:
+    path:     /addEventlocationdb/{id}
+    defaults: { _controller: MahmoudEventBundle:HomeEvent:addEventLocationDB }
+
+event_owner:
+    path:     /mylistevent
+    defaults: { _controller: MahmoudEventBundle:HomeEvent:eventByOwner }
+
+admin_space:
+    path:     /adminevent
+    defaults: { _controller: MahmoudEventBundle:HomeEvent:adminManager }
+
+admin_admin:
+    path:     /adminadminevent
+    defaults: { _controller: MahmoudEventBundle:HomeEvent:adminadminManager }
+
+my_event:
+    path:     /userevent
+    defaults: { _controller: MahmoudEventBundle:HomeEvent:myEvent }
+
+delete_event:
+    path:     /deleteevent/{id}
+    defaults: { _controller: MahmoudEventBundle:HomeEvent:deleteEvent }
+
+reserve_event:
+    path:     /reservation/{id}
+    defaults: { _controller: MahmoudEventBundle:HomeEvent:reserveEvent }
+
+search_event:
+    path:     /searchres
+    defaults: { _controller: MahmoudEventBundle:HomeEvent:searchEvent }
+
+ajax_search:
+    path:     /searchreAjax
+    defaults: { _controller: MahmoudEventBundle:HomeEvent:searchDB }
+
+reservation_card:
+    path:     /reservationCard/{id}
+    defaults: { _controller: MahmoudEventBundle:HomeEvent:reservationCard }
+
+
+delete_reservation:
+    path:     /deletereservation/{id}
+    defaults: { _controller: MahmoudEventBundle:HomeEvent:deletereservation }
+
+
+mymy_reservation:
+    path:     /reservationreservation/
+    defaults: { _controller: MahmoudEventBundle:HomeEvent:reservationByEventUser }
+
+
+
+
+
+
+mobile_event_add:
+    path:     /mobileevent/add
+    defaults: { _controller: MahmoudEventBundle:HomeEvent:mobileEventAdd }
+mobile_allevent:
+    path:     /mobileshowEvents
+    defaults: { _controller: MahmoudEventBundle:HomeEvent:mobilegetAllEvent}
+mobile_allevent1:
+    path:     /mobileshowEvents/{id}
+    defaults: { _controller: MahmoudEventBundle:HomeEvent:mobilegetOneEvent}
+mobile_statevent:
+    path:     /mobilestatEvents/{id}
+    defaults: { _controller: MahmoudEventBundle:HomeEvent:mobilegetStatEvent}
+mobile_allevent2:
+    path:     /mobileEventsbyuser/{id}
+    defaults: { _controller: MahmoudEventBundle:HomeEvent:mobilegetEventByUser}
+mobile_event_modify:
+    path:     /mobileeventmodify
+    defaults: { _controller: MahmoudEventBundle:HomeEvent:mobileEventModify}
+mobile_event_delete:
+    path:     /mobiledeleteevent/{id}
+    defaults: { _controller: MahmoudEventBundle:HomeEvent:mobileEventDelete}
+mobile_eventmastadded:
+    path:     /mobileeventlastadded
+    defaults: { _controller: MahmoudEventBundle:HomeEvent:mobileEventlastAdded }
+
+
+
+
+
+mobile_locationevnt:
+    path:     /mobileevent/addLocation
+    defaults: { _controller: MahmoudEventBundle:HomeEvent:addEventLocationMobile}
+mobile_getlocationevnt:
+    path:     /mobileeventgetLocation
+    defaults: { _controller: MahmoudEventBundle:HomeEvent:getEventLocationMobile}
+mobile_modiflocation:
+    path:     /mobilemodiflocation
+    defaults: { _controller: MahmoudEventBundle:HomeEvent:modifieEventLocationMobile}
+mobile_deletlocation:
+    path:     /mobiledeletlocation/{id}
+    defaults: { _controller: MahmoudEventBundle:HomeEvent:deleteEventLocationMobile}
+
+
+
+mobile_login:
+    path:     /mobillogin
+    defaults: { _controller: MahmoudEventBundle:HomeEvent:loginMobile}
+
+mobile_reservation:
+    path:     /mobilereservation
+    defaults: { _controller: MahmoudEventBundle:HomeEvent:showReservationMobile}
+mobile_addreservation:
+    path:     /mobileaddreservation
+    defaults: { _controller: MahmoudEventBundle:HomeEvent:addReservationMobile}
+mobile_deletereservation:
+    path:     /mobiledeletereservation/{id}
+    defaults: { _controller: MahmoudEventBundle:HomeEvent:deleteReservationMobile}
+mobile_reservationbyuser:
+    path:     /mobilereservationbyuser/{id}
+    defaults: { _controller: MahmoudEventBundle:HomeEvent:reservationByUserMobile}
+
+mobile_search:
+    path:     /searchreMobile
+    defaults: { _controller: MahmoudEventBundle:HomeEvent:searchMobile }
+

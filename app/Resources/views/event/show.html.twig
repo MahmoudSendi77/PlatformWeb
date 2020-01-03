@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Event</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td> <input value="
+                    {{ event.id }}
+                ">
+                </td>
+            </tr>
+            <tr>
+                <th>Eventtitle</th>
+                <td><input value="
+                    {{ event.eventTitle }}"></td>
+            </tr>
+            <tr>
+                <th>Eventpicture</th>
+                <td><input value="
+{{ event.eventPicture }}"></td>
+            </tr>
+            <tr>
+                <th>Eventdescription</th>
+                <td><input value="{{ event.eventDescription }}"></td>
+            </tr>
+            <tr>
+                <th>Eventadress</th>
+                <td><input value="{{ event.eventAdress }}"></td>
+            </tr>
+            <tr>
+                <th>Eventcountry</th>
+                <td><input value="{{ event.eventCountry }}"></td>
+            </tr>
+            <tr>
+                <th>Eventhoure</th>
+                <td><input value="{{ event.eventHoure }}"></td>
+            </tr>
+            <tr>
+                <th>Eventstartdate</th>
+                <td>{% if event.eventStartDate %}<input value="{{ event.eventStartDate|date('Y-m-d') }}">{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Eventenddate</th>
+                <td>{% if event.eventEndDate %}<input value="{{ event.eventEndDate|date('Y-m-d') }}">{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Eventcategory</th>
+                <td><input value="{{ event.eventCategory }}"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('event_index') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}

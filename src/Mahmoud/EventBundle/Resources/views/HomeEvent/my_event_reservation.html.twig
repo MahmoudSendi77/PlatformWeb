@@ -1,0 +1,72 @@
+{% extends "base.html.twig" %}
+
+  {% block header %}
+      <!-- Header -->
+      <header class="masthead">
+          <div class="container">
+              <div class="intro-text">
+                  <div class="intro-lead-in">Welcome To Chick Click!</div>
+                  <div class="intro-heading text-uppercase">WELCOM TO FASHION EVENTS</div>
+              </div>
+          </div>
+      </header>
+
+  {% endblock %}
+
+
+{% block other %}
+
+
+
+    <br>
+
+
+
+   {# Card title
+    This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
+
+    Last updated 3 mins ago
+
+    Copy#}
+    <center><a href="#"><h4>  Click On Card To Access Your Reservation </h4></a>
+        <hr></center>
+    <br>
+    <br>
+
+    {% for i in listEvent %}
+<center>
+       {# <a href="{{ path('reservation_card',{'id':i.getId}) }}">  azertuytyt : + i.getId </a> <br>
+#}
+    <a href="{{ path('reservation_card',{'id':i.getId}) }}">
+        <div class="card mb-3" style="max-width: 540px;">
+            <div class="row no-gutters">
+                <div class="col-md-4">
+                    <img src="{{ i.eventId.displayPhoto }}" class="card-img" alt="...">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ i.eventId.getEventTitle }}</h5>
+                        <p class="card-text">{{ i.eventId.getEventDescription }}</p>
+                        <p class="card-text"><small class="text-muted">{{ i.eventId.getEventStartDate|date("m/d/Y") }}</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+     </a>
+    <a href="{{ path('delete_reservation',{'id':i.getId}) }}" onclick="return confirm('are you sure you want to delete your reservation ?')">Delete Reservation</a>
+</center>
+        <br>        <br>
+
+    {% endfor %}
+
+    <hr>
+    <br>
+
+
+    <br>
+    <br>
+
+
+{% endblock  %}
+
+

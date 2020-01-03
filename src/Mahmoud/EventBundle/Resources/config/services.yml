@@ -1,0 +1,4 @@
+services:
+#    mahmoud_event.example:
+#        class: Mahmoud\EventBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

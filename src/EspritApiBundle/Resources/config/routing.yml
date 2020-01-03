@@ -1,0 +1,7 @@
+esprit_api_homepage:
+    path:     /esprit
+    defaults: { _controller: EspritApiBundle:Default:index }
+
+all:
+    path:     /tasks/all
+    defaults: { _controller: EspritApiBundle:Task:all }

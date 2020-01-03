@@ -1,0 +1,261 @@
+{% extends "base.html.twig" %}
+
+  {% block header %}
+      <!-- Header -->
+      <header class="masthead">
+          <div class="container">
+              <div class="intro-text">
+                  <div class="intro-lead-in">Welcome To Chick Click!</div>
+                  <div class="intro-heading text-uppercase">WELCOM TO FASHION EVENTS</div>
+              </div>
+          </div>
+      </header>
+
+  {% endblock %}
+
+{% block other %}
+
+    <br>
+
+    {# <div class="container">
+         <div class="row">
+             <div class="col-xs-8 col-xs-offset-2">
+                 <div class="input-group">
+                     <div class="input-group-btn search-panel">
+                         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                             <span id="search_concept">Filter by</span> <span class="caret"></span>
+                         </button>
+                         <ul class="dropdown-menu" role="menu">
+                             <li><a href="#contains">Contains</a></li>
+                             <li><a href="#its_equal">It's equal</a></li>
+                             <li><a href="#greather_than">Greather than ></a></li>
+                             <li><a href="#less_than">Less than < </a></li>
+                             <li class="divider"></li>
+                             <li><a href="#all">Anything</a></li>
+                         </ul>
+                     </div>
+                     <input type="hidden" name="search_param" value="all" id="search_param">
+                     <input type="text" class="form-control" name="x" placeholder="Search term...">
+                     <span class="input-group-btn">
+                     <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+                 </span>
+                 </div>
+             </div>
+         </div>
+     </div>#}
+
+    <div class="w-100">
+        <center>
+            <form action="{{ path('search_event') }}" id="searchi" class="" method="get">
+
+                <select name="" id="">
+                    <option value="Country" id="Country">ByCountry</option>
+                    <option value="Filter" id="Filter">Filter By</option>
+                </select>
+                <input type="text" class="w-75" placeholder="search for event" id="search">
+                <button class="" type="submit"><i class="fa fa-search"
+                                                  aria-hidden="true"></i></button>
+            </form>
+        </center>
+
+
+    </div>
+
+
+
+
+    <div class="events" id="entitiesNav">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <ul>
+
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br>
+
+    <!-- jQuery is necessary -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            var searchRequest = null;
+            /* $("#selector").keyup(function (){}*/
+            $("#search").keyup(function () {
+                var minlength = 3;
+                var that = this;
+                var value = $(this).val();
+                var entitySelector = $("#entitiesNav").html('');
+                if (value.length >= minlength) {
+                    if (searchRequest != null)
+                        searchRequest.abort();
+                    searchRequest = $.ajax({
+                        type: "GET",
+                        url: "{{ path('ajax_search') }}",
+                        data: {
+                            'q': value
+                        },
+                        dataType: "text",
+                        success: function (msg) {
+                            //we need to check if the value is the same
+                            if (value == $(that).val()) {
+                                var result = JSON.parse(msg);
+                                $.each(result, function (key, arr) {
+                                    $.each(arr, function (id, value) {
+                                        if (key == 'entities') {
+                                            if (id != 'error') {
+                                                entitySelector.append('' +
+                                                    '<div style="width: auto; height: 100px; padding-left: 50px " id="show_event_div">' +
+                                                    '<div class="container">' +
+                                                    '<li> <a href="/chick_click/web/app_dev.php/event/showEventDetail/'+id+' ">  <img  src=" ' + value[1] + '" style="width: 90px ;height: 50px" >  ' + value[0] + '</a></li>' +
+                                                    ' </div>' +
+                                                    ' </div>');
+                                            } else {
+                                                entitySelector.append('<li class="errorLi">' + value + '</li>');
+                                            }
+                                        }
+                                    });
+                                });
+                            }
+
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+    <br>
+
+
+    <hr>
+    <div class="events" id="show_event_div">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+
+                    {% for i in  listEvent %}
+
+                    <!-- Event -->
+                    <div class="event ">
+                        <div class="row row-lg-eq-height">
+                            <div class="col-lg-6 event_col">
+                                <div class="event_image_container">
+                                    <div class="background_image"
+                                         style="background-image:url({{ i.displayPhoto }})"></div>
+                                    <div class="date_container">
+                                        <a href="#">
+											<span class="date_content d-flex flex-column align-items-center justify-content-center">
+												<div class="date_day">{{ i.getEventStartDate|date("m/d/Y")|slice(3,2) }}</div>
+												<div class="date_month">{{ i.getEventStartDate|date("M") }}</div>
+											</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 event_col">
+                                <div class="event_content">
+                                    <div class="event_title">{{ i.getEventTitle }}</div>
+                                    <div class="event_location">@ {{ i.getEventCountry }}</div>
+                                    <div class="event_text">
+                                        <p>Donec quis metus ac arcu luctus accumsan. Nunc in justo tincidunt,
+                                            sodales nunc id, finibus nibh. Class aptent taciti sociosqu ad
+                                            litora torquent per conubia nostra, per inceptos himenaeos. Fusce
+                                            nec ante vitae lacus aliquet vulputate. Donec scelerisque accu msan
+                                            molestie. Vestibulum ante ipsum primis in faucibus orci luctus.</p>
+                                    </div>
+                                    <div><a href=" {{ path('event_detail',{'id':i.getId}) }}"
+                                            class="white-text d-flex justify-content-end"><h5>Read more <i
+                                                        class="fas fa-angle-double-right"></i></h5></a>
+                                    </div>
+                                    <div class="event_speakers">
+                                        <!-- Event Speaker -->
+                                        <div class="event_speaker d-flex flex-row align-items-center justify-content-start">
+                                            <table>
+                                                <tr>
+                                                   {# <td>
+                                                        <div class="col-lg-4 milestone_col">
+                                                            <div class="milestone d-flex flex-row align-items-start justify-content-start">
+                                                                <div class="milestone_counter" data-end-value="2">0
+                                                                </div>
+                                                                <div class="milestone_content">
+                                                                    <div class="milestone_text">Subscriber</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>#}
+                                                    <td>
+                                                        <div class="col-lg-4 milestone_col">
+                                                            <div class="milestone d-flex flex-row align-items-start justify-content-start">
+                                                                <div class="milestone_counter" data-end-value="{{ i.getEventNBRPlace }}">0
+                                                                </div>
+                                                                <div class="milestone_content">
+                                                                    <div class="milestone_text">Availability</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+
+                                        </div>
+                                        {#<div class="event_speaker d-flex flex-row align-items-center justify-content-start">
+                                            <div>
+                                                <div class="event_speaker_image"><img
+                                                            src="{{ asset('No-Image-Availbe.jpg') }}" alt="">
+                                                </div>
+                                            </div>
+                                            <div class="event_speaker_content">
+                                                <div class="event_speaker_name">Michael Smith</div>
+                                                <div class="event_speaker_title">Marketing Specialist</div>
+                                            </div>
+                                        </div>#}
+                                        <!-- Event Speaker -->
+                                        {#  <div class="event_speaker d-flex flex-row align-items-center justify-content-start">
+                                              <div>
+                                                  <div class="event_speaker_image"><input type="image"
+                                                                                          data-image-src=""></div>
+                                              </div>
+                                              <div class="event_speaker_content">
+                                                  <div class="event_speaker_name"></div>
+
+                                              </div>
+                                          </div>#}
+                                    <div class="event_buttons ">
+                                        <div class="button event_button event_button_1"><a
+                                                    href="{{ path('reserve_event',{'id':i.getId}) }}">Get Your
+                                                Reservation Now!</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {% endfor %}
+                <div class=" align-content-lg-center">{{ knp_pagination_render(listEvent) }}</div>
+
+                <br>
+                <br>
+                <br>
+            </div>
+
+        </div>
+    </div>
+
+    </div>
+
+    <script src="https://npmcdn.com/leaflet@1.0.0-rc.2/dist/leaflet.js"></script>
+
+    <br>
+    <br>
+    <br>
+
+    {% block javascripts %}
+        {{ parent() }}
+    {% endblock %}
+{% endblock %}

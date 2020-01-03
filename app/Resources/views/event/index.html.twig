@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Events list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Eventtitle</th>
+                <th>Eventpicture</th>
+                <th>Eventdescription</th>
+                <th>Eventadress</th>
+                <th>Eventcountry</th>
+                <th>Eventhoure</th>
+                <th>Eventstartdate</th>
+                <th>Eventenddate</th>
+                <th>Eventcategory</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for event in events %}
+            <tr>
+                <td><a href="{{ path('event_show', { 'id': event.id }) }}">{{ event.id }}</a></td>
+                <td>{{ event.eventTitle }}</td>
+                <td>{{ event.eventPicture }}</td>
+                <td>{{ event.eventDescription }}</td>
+                <td>{{ event.eventAdress }}</td>
+                <td>{{ event.eventCountry }}</td>
+                <td>{{ event.eventHoure }}</td>
+                <td>{% if event.eventStartDate %}{{ event.eventStartDate|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if event.eventEndDate %}{{ event.eventEndDate|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ event.eventCategory }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('event_show', { 'id': event.id }) }}">show</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    
+{% endblock %}
