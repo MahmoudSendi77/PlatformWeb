@@ -1,0 +1,42 @@
+
+
+
+{% extends "base.html.twig" %}
+
+  {% block header %}
+
+      <!-- Header -->
+      <header class="masthead">
+          <div class="container">
+              <div class="intro-text">
+                  <div class="intro-lead-in">Welcome To Chick Click!</div>
+                  <div class="intro-heading text-uppercase">WELCOME TO CHICK CLICK FORUM</div>
+                  <div>
+                  <table>
+                      <tr>
+                          <td>Subject Name</td>
+                          <td>Subject Description</td>
+
+                      </tr>
+                      <div>
+                          <h1>Search by Subject Name</h1>
+                          {{ form(f) }}
+
+                      </div>
+                      {% for entity in forums   %}
+                          <tr>
+
+                              <td>{{ entity.subjectName }}</td>
+                              <td>{{ entity.subjectDescription }}</td>
+
+                          </tr>
+                      {% endfor %}
+
+                  </table>
+                  </div>
+
+              </div>
+          </div>
+      </header>
+  {% endblock %}
+

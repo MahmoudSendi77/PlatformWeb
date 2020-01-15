@@ -1,0 +1,56 @@
+
+{% extends "base.html.twig" %}
+
+  {% block header %}
+
+<!-- Header -->
+<header class="masthead">
+    <div class="container">
+        <div class="intro-text">
+            <div class="intro-lead-in">Welcome To Chick Click!</div>
+            <div class="intro-heading text-uppercase">WELCOME TO CHICK CLICK FORUM</div>
+            <div class="intro-lead-in">Comments are below !</div>
+
+        </div>
+    </div>
+</header>
+  {% endblock %}
+{% block other %}
+<section class="bg-light page-section" id="portfolio">
+    <center><div class="card-group"></div></center>
+        <tr>
+            <h1 style="text-align: center" >
+<table border="0">
+    <td>
+        <tr> </tr>
+        <tr> </tr>
+        <tr>
+
+    {% for rep in listComment %}
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{ rep.commentSuDate|date("d/m/y") }}</h5>
+                    <p class="card-text">{{ rep.commentSuContent }}.</p>
+                    <div>
+                        <td><a href="{{path('comment_create',{'id':rep.id})}}">CLICK HERE TO ADD YOUR OWN Comment NOW</a></td></div>
+
+
+                </div>
+            </div>
+        </tr>
+    </td>
+
+
+    {% endfor %}
+
+
+</table>
+
+            </h1>
+    </div>
+        </tr>
+        </div>
+    </div>
+</section>
+{% endblock %}
+

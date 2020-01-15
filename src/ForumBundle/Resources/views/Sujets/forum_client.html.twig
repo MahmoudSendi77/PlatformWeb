@@ -1,0 +1,75 @@
+{% extends "base.html.twig" %}
+
+  {% block header %}
+      <!-- Header -->
+      <header class="masthead">
+          <div class="container">
+              <div class="intro-text">
+                  <div class="intro-lead-in">Welcome To Chick Click!</div>
+                  <div class="intro-heading text-uppercase">WELCOME TO CHICK CLICK FORUM</div>
+
+                  <div>
+                      <td><a href="{{path('forum_create')}}">CLICK HERE TO ADD YOUR OWN SUBJECT NOW</a></td></div>
+                  <div>
+                      <td><a href="{{path('chart_statClient')}}">CLICK HERE TO SEE OUR STATISTICS </a></td></div>
+
+
+          </div>
+
+          <div>
+
+              {{ form(f) }}
+
+          </div>
+
+          </div>
+      </header>
+
+
+
+
+
+
+  {% endblock %}
+{% block other %}
+    <section class="bg-light page-section" id="portfolio">
+        <centre><div class="card-group"></div></centre>
+        <tr>
+            <h1 style="text-align: center" >
+
+                <table  class="table">
+                    <td>
+                        <tr>
+                            <div id="recherchetable">
+                            {% for entity in forums   %}
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5><p class="card-text">Categorie :{{ entity.name }}</p></h5>
+                                    <p class="card-title">{{ entity.subjectName }}</p>
+
+                                    <h5><p class="card-text">{{ entity.subjectDescription }}</p></h5>
+
+                                    <a href="{{path('show_comment_client',{'id':entity.id})}}" class="white-text d-flex justify-content-end"><h5> Comments <i class="fas fa-angle-double-right"></i></h5></a>
+                                </div>
+                            </div>
+
+                        </tr>
+                    </td>
+
+
+                    {% endfor %}
+</div>
+                </table>
+
+            </h1>
+
+            </div>
+        </tr>
+
+    </section>
+{% endblock %}
+
+
+
+
+

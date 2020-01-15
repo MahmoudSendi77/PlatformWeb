@@ -1,0 +1,27 @@
+
+{% extends "base_back.html.twig" %}
+
+{% block content_event %}
+
+<table border="0">
+    <td>
+
+
+    {% for rep in listCateg %}
+            <div class="card">
+                <div class="card-body">
+                    <h6class="card-title">{{ rep.categorieName }}</h6>
+                    <a href="{{path('delete_categorie',{'id':rep.id})}}" class="white-text d-flex justify-content-end"><h5> Delete <i></i></h5></a>
+                    <a href="{{path('update_categorie',{'id':rep.id})}}" class="white-text d-flex justify-content-end"><h5> Update <i></i></h5></a>
+
+
+                </div>
+            </div>
+
+    </td>
+</table>
+
+    {% endfor %}
+
+{% endblock %}
+

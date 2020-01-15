@@ -1,0 +1,27 @@
+{% extends "base.html.twig" %}
+
+  {% block header %}
+
+<!-- Header -->
+<header class="masthead">
+    <div class="container">
+        <div class="intro-text">
+            <div class="intro-lead-in">Welcome To Chick Click!</div>
+            <div class="intro-heading text-uppercase">WELCOME TO CHICK CLICK FORUM</div>
+            <div class="intro-lead-in">Add/Update a Comment !</div>
+        </div>
+    </div>
+</header>
+  {% endblock %}
+{% block other %}
+    <div>
+
+        <table>
+
+            {{ form_start(form, {'attr':{'novalidate':'novalidate'}}) }}
+
+            {{ form_end(form) }}
+        </table>
+    </div>
+{% endblock %}
+

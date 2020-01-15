@@ -1,0 +1,170 @@
+forum_homepage:
+    path:     /
+    defaults: { _controller: ForumBundle:Default:index }
+
+forum_recherche:
+    path:     /recherche
+    defaults: { _controller: ForumBundle:Sujet:recherche }
+
+delete:
+    path:     /delete/{id}
+    defaults: {_controller: ForumBundle:Sujet:delete }
+
+forum_update:
+    path:     /update/{id}
+    defaults: {_controller: ForumBundle:Sujet:update }
+
+forum_create:
+    path:     /create
+    defaults: {_controller: ForumBundle:Sujet:create }
+
+
+
+
+show_comment_client:
+    path:     /showCommentClient/{id}
+    defaults: { _controller: ForumBundle:CommentaireSu:showCommentClient }
+
+deleteC:
+    path:     /deleteC/{id}
+    defaults: {_controller: ForumBundle:CommentaireSu:deleteC }
+
+comment_update:
+    path:     /updateComment/{id}
+    defaults: {_controller: ForumBundle:CommentaireSu:updateComment }
+
+comment_create:
+    path:     /createComment/{id}
+    defaults: {_controller: ForumBundle:CommentaireSu:createComment }
+
+
+
+show_comment_admin:
+    path:     /showCommentAdmin/{id}
+    defaults: { _controller: ForumBundle:CommentaireSu:showCommentAdmin }
+
+
+comment_create_admin:
+    path:     /createCommentAdmin/{id}
+    defaults: {_controller: ForumBundle:CommentaireSu:createCommentAdmin }
+
+comment_update_admin:
+    path:     /updateCommentAdmin/{id}
+    defaults: {_controller: ForumBundle:CommentaireSu:updateCommentAdmin }
+
+
+
+
+
+
+
+
+
+
+
+show_categorie:
+    path:     /showCategorie
+    defaults: { _controller: ForumBundle:CategorieSu:showCategorie }
+
+delete_categorie:
+    path:     /deleteCat/{id}
+    defaults: { _controller: ForumBundle:CategorieSu:deleteCat }
+
+update_categorie:
+    path:     /updateCat/{id}
+    defaults: { _controller: ForumBundle:CategorieSu:updateCat }
+
+create_categorie:
+    path:     /createCat
+    defaults: { _controller: ForumBundle:CategorieSu:createCat }
+
+forum_rechercheC:
+    path:     /rechercheC
+    defaults: { _controller: ForumBundle:Sujet:rechercheC }
+
+create_sujet_Admin:
+    path:     /createsujetAdmin
+    defaults: {_controller: ForumBundle:Sujet:createsujetAdmin }
+
+update_sujet_Admin:
+    path:     /updatesujetAdmin/{id}
+    defaults: {_controller: ForumBundle:Sujet:updatesujetAdmin }
+
+chart_stat:
+    path:     /chart
+    defaults: {_controller: ForumBundle:ChartSu:chart }
+
+my_sujet:
+    path:     /mySubject
+    defaults: {_controller: ForumBundle:Sujet:mySubject }
+
+chart_statClient:
+    path:     /chartClient
+    defaults: {_controller: ForumBundle:ChartSu:chartClient }
+
+
+
+
+
+
+
+esprit_api_homepage:
+    path:     /
+    defaults: { _controller: ForumBundle:Default:index }
+
+
+
+
+
+#sujetsmobile
+affiche_mobile:
+    path:     /mobsujet
+    defaults: { _controller: ForumBundle:Mobile:afficheSujetMobile }
+
+ajout_mobile:
+    path:     /mobsujetadd
+    defaults: { _controller: ForumBundle:Mobile:new }
+
+find_mobile:
+    path:     /mobsujetfind/{id}
+    defaults: { _controller: ForumBundle:Mobile:find }
+
+supp_mobile:
+    path:     /mobsujetsupp/{id}
+    defaults: { _controller: ForumBundle:Mobile:supp }
+
+modif_mobile:
+    path:     /mobsujetmodif/{id}
+    defaults: { _controller: ForumBundle:Mobile:modif }
+
+#commenatiremobilesmobile
+affiche_commmobile:
+    path:     /mobcomm
+    defaults: { _controller: ForumBundle:Mobile:affichecommentaireMobile }
+
+find_commentmobile:
+    path:     /findcomm/{id}
+    defaults: { _controller: ForumBundle:Mobile:findcomm }
+
+ajout_commmobile:
+    path:     /newcomm
+    defaults: { _controller: ForumBundle:Mobile:newcomm }
+
+supp_commmobile:
+    path:     /suppcomm/{id}
+    defaults: { _controller: ForumBundle:Mobile:suppcomm }
+
+modif_commmobile:
+    path:     /modifcomm/{id}
+    defaults: { _controller: ForumBundle:Mobile:modifcomm }
+
+
+find_commsujetmobile:
+    path:     /findcommsujet/{id}
+    defaults: { _controller: ForumBundle:Mobile:findcommsujet }
+
+#categoriemobile
+affichecateg_mobile:
+    path:     /afficheCategMobile
+    defaults: { _controller: ForumBundle:Mobile:afficheCategMobile }
+

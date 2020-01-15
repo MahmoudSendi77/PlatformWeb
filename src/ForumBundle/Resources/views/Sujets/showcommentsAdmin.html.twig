@@ -1,0 +1,41 @@
+{% extends "base_back.html.twig" %}
+{% block content_event %}
+    <section class="bg-light page-section" id="portfolio">
+        <center><div class="card-group"></div></center>
+        <tr>
+            <h1 style="text-align: center" >
+                <table border="0">
+                    <td>
+                        <tr> </tr>
+                        <tr> </tr>
+                        <tr>
+
+                            {% for rep in listComment %}
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ rep.commentSuDate|date("d/m/y") }}</h5>
+                                    <p class="card-text">{{ rep.commentSuContent }}</p>
+                                    <a href="{{path('comment_update_admin',{'id':rep.id})}}" class="white-text d-flex justify-content-end"><h5> Update <i></i></h5></a>
+                                    <a href="{{path('deleteC',{'id':rep.id})}}" class="white-text d-flex justify-content-end"><h5> Delete <i></i></h5></a>
+                                    <a href="{{path('comment_create_admin',{'id':rep.id})}}" class="white-text d-flex justify-content-end"><h5> Add a comment  <i></i></h5></a>
+
+                                </div>
+                            </div>
+                        </tr>
+                    </td>
+
+                    {% endfor %}
+
+
+
+
+                </table>
+
+            </h1>
+            </div>
+        </tr>
+        </div>
+        </div>
+    </section>
+{% endblock %}
+
